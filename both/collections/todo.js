@@ -1,0 +1,1 @@
+export const Todo = new Mongo.Collection('todo');

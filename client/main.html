@@ -1,0 +1,24 @@
+<head>
+  <title>simple-meteor</title>
+</head>
+
+<body>
+  <h1>Simple Meteor App!</h1>
+
+  {{> hello}}
+</body>
+
+<template name="hello">
+  <ul>
+      {{#each todos}}
+        {{> todo}}
+      {{/each}}
+  </ul>
+  {{#if hasMore}}
+    <button class="loadMore">Load More</button>
+  {{/if}}
+</template>
+
+<template name="todo">
+    <li class="animated bounceInLeft">{{title}}</li>
+</template>
