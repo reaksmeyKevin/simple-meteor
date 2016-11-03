@@ -1,24 +1,67 @@
 <head>
-  <title>simple-meteor</title>
+	<title>simple-meteor</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!-- Compiled and minified JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
 </head>
 
 <body>
-  <h1>Simple Meteor App!</h1>
-
-  {{> hello}}
+	  <nav>
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo">Logo</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="sass.html">Sass</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">Javascript</a></li>
+        <li><a href="mobile.html">Mobile</a></li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        <li><a href="sass.html">Sass</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">Javascript</a></li>
+        <li><a href="mobile.html">Mobile</a></li>
+      </ul>
+    </div>
+  </nav>
+	<div class="container">
+		<header>
+			<h1>Simple Meteor app</h1>
+		</header>
+    <div class="col s12">
+	  	{{> hello}}
+    </div>
+	</div>
 </body>
 
 <template name="hello">
-  <ul>
-      {{#each todos}}
-        {{> todo}}
-      {{/each}}
-  </ul>
-  {{#if hasMore}}
-    <button class="loadMore">Load More</button>
+   {{> quickForm id="todo" collection=collection doc=data type=type resetOnSuccess=true}}
+	 <div class="row">
+		{{#each todos}} 
+      {{> todo}}
+     {{/each}}
+	 </div>
+	{{#if hasMore}}
+  	<button class="waves-effect waves-light btn loadMore">Load More</button> 
   {{/if}}
 </template>
 
 <template name="todo">
-    <li class="animated bounceInLeft">{{title}}</li>
+	<div class="col s12 m7">
+		<div class="card">
+			<div class="card-content">
+				<span class="card-title activator grey-text text-darken-4">{{title}}<i class="material-icons right">more_vert</i></span>
+				<p>{{des}}</p>
+			</div>
+			<div class="card-action">
+      	<a href="#" class="update"><i class="material-icons left">mode_edit</i></a>
+				<a href="#" class="remove"><i class="material-icons left">delete</i></a>
+			</div>
+			<div class="card-reveal">
+				<span class="card-title grey-text text-darken-4">{{title}}<i class="material-icons right">close</i></span>
+				<p>{{des}}</p>
+			</div>
+		</div>
+	</div>
 </template>
